@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Kalium</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #f4f4f4;
+            --text-color: #333;
+            --button-color: #ffffff;
+            --button-bg: #1a73e8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 10%;
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+
+        .hero {
+            background: url('https://i.pinimg.com/736x/a6/52/51/a6525175554c378f240270e12cb7f6c6.jpg') no-repeat center/cover;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .hero button {
+            background: var(--button-bg);
+            color: var(--button-color);
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 40px 10%;
+        }
+
+        .product {
+            background: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .product img {
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        /* Khi hover vào ảnh, đổi ảnh khác */
+        .product img:hover {
+            content: attr(data-hover);
+            opacity: 0;
+        }
+
+        .product img::after {
+            content: attr(data-hover);
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .navbar {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div>Kalium</div>
+        <div>
+            <a href="#">Home</a>
+            <a href="#">Shop</a>
+            <a href="#">Product</a>
+            <a href="#">News</a>
+            <a href="#">Pages</a>
+            <a href="#">Buy Now</a>
+        </div>
+    </div>
+
+    <div class="hero">
+        <h1>Feel The Life And Relax</h1>
+        <button>SHOP NOW</button>
+    </div>
+
+    <div class="products">
+        <div class="product">
+            <img src="https://www.forcewear.co.uk/cdn/shop/products/LS_2acdbbeb-0e35-4beb-800b-3f641ca85e0a_grande.jpg?v=1702908863" data-hover="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXskG0-fYXKXj1q54PZ9aAF4uLBwbH7epeng&s" alt="Product 1">
+            <h3>Broken T Shirt</h3>
+            <p>$9</p>
+        </div>
+        <div class="product">
+            <img src="https://micklagaard.com/cdn/shop/files/knickers3.jpg?v=1683208763&width=1080" data-hover="https://rosentreter-modedesign.de/assets/images/b/foto-02-08-21-17-08-19-b6862c8b.jpg" alt="Product 2">
+            <h3>Knickerboxer</h3>
+            <p>$25</p>
+        </div>
+        <div class="product">
+            <img src="https://assets.ajio.com/medias/sys_master/root/h38/h19/12367071739934/-473Wx593H-410113021-ownblackmetal-MODEL.jpg" data-hover="https://assets.myntassets.com/w_412,q_60,dpr_2,fl_progressive/assets/images/23530532/2023/6/5/4df7a8be-007a-408e-a5a2-095dde030fdc1685968928343maxMenBrownLeatherBelt2.jpg" alt="Product 3">
+            <h3>Studio Belt</h3>
+            <p>$7</p>
+        </div>
+        <div class="product">
+            <img src="https://cdni.llbean.net/is/image/wim/513067_52_41?hei=1095&wid=950&resMode=sharp2&defaultImage=llbprod/513067_52_41" data-hover="https://www.pompeiibrand.com/cdn/shop/files/CHAMBRAYSHIRT_01_5400bd9e-3a39-46aa-af8a-8394fbea1069_1200x.jpg?v=1709295826" alt="Product 4">
+            <h3>Chambray Shirt</h3>
+            <p>$29</p>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.product img').forEach(img => {
+            const originalSrc = img.src;
+            const hoverSrc = img.getAttribute('data-hover');
+
+            img.addEventListener('mouseover', () => {
+                img.src = hoverSrc;
+            });
+
+            img.addEventListener('mouseout', () => {
+                img.src = originalSrc;
+            });
+        });
+    </script>
+</body>
+</html>

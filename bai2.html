@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Store</title>
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            background-color: #222;
+            color: white;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ff9900;
+        }
+
+        /* Banner */
+        .banner {
+            margin-top: 60px;
+        }
+
+        .banner img {
+            width: 100%;
+            display: block;
+            max-height: 400px;
+            object-fit: cover;
+        }
+
+        /* New Arrivals */
+        .new-arrivals {
+            text-align: center;
+            padding: 50px;
+        }
+
+        .products {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .product {
+            text-align: center;
+            width: 200px;
+            transition: transform 0.3s;
+        }
+
+        .product img {
+            width: 100%;
+            transition: transform 0.3s;
+            border-radius: 10px;
+        }
+
+        .product img:hover {
+            transform: scale(1.1);
+        }
+
+        .product img:active {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: center;
+                padding: 10px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .banner img {
+                max-height: 250px;
+            }
+
+            .products {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .product {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="logo">Kalium</div>
+        <nav>
+            <ul>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">Product</a></li>
+                <li><a href="#">News</a></li>
+                <li><a href="#">Pages</a></li>
+                <li><a href="#">Buy Now</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Banner -->
+    <section class="banner">
+        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAPEA8QDw8PDw8PEA8PDQ8ODQ8PDQ8PFREWFxURFRUYHSggGBolGxUVITEhJSkrLi4uFx8zODMsNygtLisBCgoKDg0OGhAQFy0fHx0rLS0tLS0rLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tKy03LS0tLS0tLf/AABEIAMQBAQMBIgACEQEDEQH/xAAcAAACAgMBAQAAAAAAAAAAAAAAAQIGAwQFBwj/xAA+EAACAQIEAwQIBAQEBwAAAAAAAQIDEQQFITESQVEGInGBEzJhkaGxwdEHQlLwFCOC4WKys8IWJFNyc4OS/8QAGAEBAAMBAAAAAAAAAAAAAAAAAAECAwT/xAAgEQEBAAICAgMBAQAAAAAAAAAAAQIRITEDQRIiMhME/9oADAMBAAIRAxEAPwDx9DEMlUgCwwAaCwWAYAOwAIbBANANIaQCGFh2AQ0OwAIAcl1XvGgEMLDsBBiJtCsBEiZBWAigY2RAAEMAAAsAAMQCAYAQGCQwFYdgGkArDsOw0gBIaQ0AEWhpErDSASQ0hpErAQMVSul4/AxYmv8Alj5voKEaaWl3L2vQpllppjhtGVSU/Vm/CMbL3sjOhUtrex08Nh5vm7fAyN2dlwt+xpP46Mz+bX+ccT0FudiXoJLVP3MstCFGfdnH0c1zto37URr4CMO/HVL14raUeq9qI/on+bhUKs1vr47+826cro362BSkpL1HG/gwq4JJXjq7apbotj5OVMvHw0WhWMso8iLibMGOwibQrAKxFxMgrAY3EjYy2EBBIdiQmAhDEAgAAEh2GOwEbDJJBYARKwkSQCsOwwABpANANI18dW4Fpu9vubDkcvENzlfyXgVtWxm2BanSy/CNtOT4UYKUVHrJ9Ejp4LDym+Kp3YL8v5pexvkjHPJ0YYt6vVUYqNNbrdv4mnDCVJP114av5s25yTem3I6GCpopOmut1q4bLJO3s26L2HVwmUyenLodfA4dO2hYMFgUloim2nxVafZ98DV/BFdxGXVMPNvVdd9fgetQwhq4/KoTi1KK9xO0aeSYqN1xqzTeri1a/lsapYO0eUqi3JacpdHF7PyK/Dmuhv48t8OTzY+0WhNGRojY2YICZOwmgICZKwmgIgMTAixEhMCIDABoYkSAEFhgAIkJDACVhDABXBsxTqdCLdLSbRxEtPvuakF+0OrK+7uYrmfbaTTep1qcPyuT6OWnnYl/GSldyei0jFaRXsSOcpfv2k4S0sV+K3zdfCVHJosuXR2KngKiT10LJl+Z0Y6Sl8HYixfHJcsrhsWjCWsVXJcfQnZRqRv0bsy2Ydq25lpr8txvYencMRRQYWsluYsxznC0tJ1oKf6E7y9yJ1tXelJ7e4T+RKaWsLvxjzR5hh5XfnY9d7S42jXw1b0ck2ou62kuWzPHsBz9jL+KcsvNeG20RaJsidLkRBoYMCDRBoyMiwIWFYmxAQaCw2IBWAYAJDRGJNAMAAAJESQDBgNgYmuZjq7aftmaS0MUkUy6Xx7adVWMRnxO5gZWNUScCDNnCQuTVcZyzYVpNOXxO3h82h6kYcb6Rg5P3JXNSGUuauk34Fq7MYKdFSiqGk4uMnGfDLVbq6K7ntb7eo4FHF0ZSvwJST3V1Z9H0fiXfslnPHJU22+SuzBW7JqNNVZzb4I8NqkU3KFrRppp6W0s9duet+N2cpeixUNdOK3kVy16aYb9vS8/ioUrOTjxLk7O3iUmhm2Hw07xVOD5ynOKnLzk7s9F7QZesRSTjzituliq4vs46lKnRp0nT4JSc+DhtVUlZqV9XpzIxk9rZWzqbaWdZxSxWFqSSg5wi7SildddUeY5e9Ze13PUP+C/4WjiZarjhOXBe8Y6X+h5lCk6cnbbVE42SqZy2NmSIMFO/kDN3JSBjBkiJFkhAQsDJMiBFiJEQEAwAhEyGNE0BIQ0AAMBoAGAARkY5L5GR6hUXyM82uDm1nqYpaGeMOKViOJpW95WX00s4217m1g5WNWxmw25a9KYrt2fxC0TPQsrSsrWPI8rruMkejZJje6jHKOrHl1O0GI/lyT0SKJga18RC3KSOz20xslT0vrvboVDB5hGnVp2bbbWybW/NiThG5K+gMnqqdOCf6UbfoeF3jqjgZJmalTow9HK87qM4xbSsr6vY69HEyTafgRE2csHaOS/hqzl/wBKd/DhZ844WUp76/M917f4vgwOJadnKnKC8Z91f5jxPK4963Vr52E6Rl3EUrXvvd3A2MVTtJ+2z/fmjA0dOF3HH5JrKxEYAWUIQ2IBEWSZFgRYhsQCAAAgSQkNASGkRJRAlYaQDQBYViQARsGJ9Xx+w7bCxPqeDt53Ms2vjYMvhdyfRxXzf0I5rG2nh9TcyyjaKf6pOXku6vnI1s11bMZfu6LPo5RkovUxgnY6HNHWwsrNF0yjF2iijYeV7MseVVL2TMso6MasGZV4yVpW1F2dynAurevKNrNpO9r8jhZtCLkn6ScVa1kla51MkyqlUjdVGnbW8937CNcNcMflXqWTY2koQpxlT4o3jFRttfSz6m/Ws3fnzKNgMgkuHhxEnK947NR10voW2lKUIfzJKUl60rWTfWxS8L54/Gqb+KmN4aFOlzqVFJr/AA0+9f8A+uBeZ5nhHbgftt7r/wBjt/iHm6xGKlGLuqS9Eul73l8bL+k47pcNOj7ZS+CJnEZXmtvMlqmtpWa/f73NJnSxtB+iprmor5L62Ode6Rr4buOf/RjrLaBEkwNmCAAACFIbIsCIhiAQwACCGKIwBEkRGgJpkiCJgMAAAbFNXjbzCT+ZiU+KSXKUkvLmY+Rv4nVpU/VitowivPh+7NLH0NJPwXxOzhFu+uppZjpCb6P6NnLjeXZlPqqrEwY4K7O1wM+FnbwOzg8RbbY46gZaTcXdFbGsWzBuM2uLZlzyLs/RmlZ2v0bXyPO8thOduGyZe+z38TBepFrl/MRnk1xq+4XK4YeOjvpu22Uf8Qe10cNF0qUr15p8KX5E/wA7+h286rYz+FqOlwKooPgjdyu/HQ8HxVScqk5VXJ1HJ+kcvW4udyMMZajPLSdObbu3dt3be+50lX4pUI8oybfjJnJgzcwsrST5poZp8a141qUqUVzU/wDPH7HAi/m/mbcMZd8XRNI1ET/nnDP/AE0pCYMGdLlQAAAiyLJMiwEIYgAAADHEmYkzIgGAAA0STIoi2RUxmQ7mFVVzJcQ2aQrSsYKM+8v8KfvFiqnIx0X80jLJtgs+Eq6f0mrmlRejqrwt8DDh61l/SvkaONxDd11+1voc+GPLqzy4a+W4F4iooJqP6pPZL6l9yH8P6Mn38S6j/TGCil46spuR6Nvm39D0/sfjVRlG/PfxOjK1z4SFi+w+FhHTf/ubKLmOUeiquMdY/l8D2rM8QlT47J3V9Dzp0J47FONKKShfjb01tt8isq9jhYfiikqd0+bSv5I9BybKW405urVbsnKLm7e4MtyqFOm00nJS7ztqWTLIpLyK5VacM1eklFLlbXxPOu0nZOFfvqLhUaupq2qequua29p6Lj6vd6X08ubOLjcSndme7OltS9vF8dk9XDu046bKS1i/t5mvFWPSM1rwkmnFPlZ6lUxWEpt34eHwenuLbtNSdObS2+X3MqRvRoQ6Nv2v6I6eXZQqjV4q3Q1xzmMc+Xjyyu1esJovsux9Oce6nF9Yv6PQq2dZJVwr764oN2jUS7rfR9GXx8ky4Z5eLLHlyGRZkZCRozRZFjkRAGIGJgMCIAY0STIIkmBMZG40wGKUbjCL1sRek49sUqLftMc6M0t7nXp01Y16+hjt0aciUWt0Tpo2JsgiLkmRnjLTysYKkOY3MmpcWhWTS9rdy2GqLllWlmVnKqOzLhlVL+xas4s2UvjjUVTvRcGrPloVXspiFCrKze8rN81xPcuVCKpUKk3sotv3HmeQY1SkpR2lKdvDjf0Ei3yejS1lfk2rm/hXY5ODqcSR1aLK1MQzqdqTfRXKdXxspJ8i45lDipTXWMre484q1SsjRHFVjmzZOvU1IU1cnSNsuGhdlsymGxX8JT2LNlkdiKbWjAQukSzXK6danOE0nGSaaFl7sb9WehVLwnNsC8PWqUZauErJ/qi9U/c0aMi2fiJStiKc1+eDT/pf9ypM7MbuSuHOaysRZEGIsqTExiAAAAMQCACVySZjuNMDLchCXeC5jjuUzXwdelLQ18TrcKU9DHWmZtWkxOQVJGNMjSdpM3MDRcmvaakFdlhynD8yR1ctw2yRccrwnCk2jm9nMNeS0LDm+Jp4ak5yaiopu7dkQOL+ImeLD4OVGL/mV+5FX1S/M/ceX5Ri3TjZJ913un9Bdos3ljK8qrvwru0ovlH7s18BLVrqtC2XRJ7ejZD2ipSUYudpPSz6l2weIUkrO/hqeGUlrdaNPRos+R9oKuHspd9NrW/wsZLx6q3dWPNM2wzp1akP0ydvDdfCxesqzanXSakru74Xva9jj9q8D3lUXNcMvLb9+wiXlf0o0otysbEo8DS52ubOWYdSqO/I0MZW4q9S2yk4rwWn0LIdbALVFny+OxX8tp6IseCRFHewRt1paGjhZGetLQpUx53+I3rUH/5f9hS5Fz/EaXew/wD7f9hTJHV4vzHJ5f3WNkRsRozDEMQAAABhExgAhoAAZC+pIhLcpmvg2oT0IVJXIQYqkjNowVHqRgtQkzJTWl+m/gSlkpqzLXksdEVai7te0uWRw7qIy4IufZamrt+wpH4tZpKeKjhoy/l0oQlOKekqkrvXwVveeh9n4pRueY9r8NGpmGLne7U4Jq21qUF9PiRLpZUHGw6T18NTNXpNcT6Oxiw61fgy2+Et7D10pWf79p38LTVuLlYqk9k+mh3chxyuoS2e32KWEWnsy3xSd3G3qySvwy625otGLqupSlTq8KqpXVvVmuUo9bnHwmE9HZx2aT8TpVYcVP2q9uq8OhmuorzH0Lqfq1SXtNXK6bcuKW7bk/Fu5tZ5kU1VVSNrO8mm95X0t9uqFk61NJ0qsuX0zt4aJz8BDY7FGJWpb2HVkSrTMcGQqzK1aPP/AMQal6tFdIzfva+xU5M7vbatfFNfphFebu/qjgNnV4/zHH5P1UWAmK5dQwI3C4DAVwAxgAAAAACISeoAVy6Wx7SiyFRgBm1YmZsIwAtBnwq7yRdcpVkvIAKVbFecqfcPN840xWKlzdVt+SikMCtWV+jFOlrq2m34s5tHdgBM9oTrL4oWHk01YAHpL1nshVdXDRc9WrJHW4bNrkAGdWjh43VtPa9vI5f8PGMrxVrt7bDAnHsqwZdsjsU0AE1LMYqv3EBSpjyrtW/+cr+MP9OJyQA68eo4su6ixABZUCAAAQAB/9k=" alt="Fashion Banner">
+    </section>
+
+    <!-- New Arrivals -->
+    <section class="new-arrivals">
+        <h2>New Arrivals</h2>
+        <div class="products">
+            <div class="product">
+                <img src="https://images.stockx.com/images/Broken-Planet-Basics-T-Shirt-Washed-Soot-Black.jpg?fit=fill&bg=FFFFFF&w=1200&h=857&q=60&dpr=1&trim=color&updated_at=1710774238" alt="T-Shirt">
+                <p>Broken T-Shirt - $9</p>
+            </div>
+            <div class="product">
+                <img src="https://bizweb.dktcdn.net/100/415/697/products/xanhden-59dac545-b271-49ac-9176-810775077983.jpg?v=1715066500533" alt="Sweater">
+                <p>Knickerboxer - $25</p>
+            </div>
+            <div class="product">
+                <img src="https://www.popovleather.com/cdn/shop/files/leather-belt-natural-popov-leather-41279232475359.jpg?v=1737495420" alt="Belt">
+                <p>Studio Belt - $7</p>
+            </div>
+            <div class="product">
+                <img src="https://cdni.llbean.net/is/image/wim/513067_52_41?hei=1095&wid=950&resMode=sharp2&defaultImage=llbprod/513067_52_41" alt="Chambray Shirt">
+                <p>Chambray Shirt - $29</p>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

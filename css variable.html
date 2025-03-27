@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Cá Nhân</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        /* Định nghĩa biến CSS */
+        :root {
+            --bg-color: #f4f4f4;
+            --text-color: #333;
+            --navbar-bg: #333;
+            --navbar-text: white;
+            --section-bg: white;
+            --section-shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        /* Chế độ Dark Mode */
+        html[data-theme="dark"] {
+            --bg-color: #1e1e1e;
+            --text-color: #ddd;
+            --navbar-bg: #444;
+            --navbar-text: #f1c40f;
+            --section-bg: #333;
+            --section-shadow: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Áp dụng biến vào giao diện */
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: Arial, sans-serif;
+            transition: all 0.4s ease-in-out;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: var(--navbar-bg);
+            color: var(--navbar-text);
+            padding: 15px;
+            text-align: center;
+        }
+
+        .navbar a {
+            color: var(--navbar-text);
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+
+        .navbar a:hover {
+            color: #f1c40f;
+        }
+
+        /* Nút chuyển theme */
+        #theme-toggle {
+            background: none;
+            border: none;
+            color: var(--navbar-text);
+            font-size: 18px;
+            cursor: pointer;
+            margin-left: 15px;
+        }
+
+        #theme-toggle:hover {
+            color: #f1c40f;
+        }
+
+        /* Ảnh Profile */
+        .profile {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .profile img {
+            width: 150px;
+            border-radius: 50%;
+            box-shadow: 0px 0px 10px var(--section-shadow);
+        }
+
+        /* Các phần nội dung */
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .section {
+            background: var(--section-bg);
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px var(--section-shadow);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+            }
+
+            .navbar {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .navbar a {
+                font-size: 16px;
+                margin: 5px;
+            }
+
+            #theme-toggle {
+                margin-top: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="#about"><i class="fas fa-user"></i> Giới thiệu</a>
+        <a href="#hobbies"><i class="fas fa-heart"></i> Sở thích</a>
+        <a href="#education"><i class="fas fa-graduation-cap"></i> Học vấn</a>
+        <a href="#career"><i class="fas fa-briefcase"></i> Định hướng</a>
+        <a href="#contact"><i class="fas fa-envelope"></i> Liên hệ</a>
+        <button id="theme-toggle"><i class="fas fa-moon"></i></button>
+    </div>
+
+    <div class="container">
+        <div class="profile">
+            <img src="https://hoanghamobile.com/tin-tuc/wp-content/uploads/2024/03/anh-hoat-hinh-1.jpg" alt="Profile">
+            <h1>Nguyễn Thị Mỹ Hạnh</h1>
+            <p>Đam mê công nghệ - Sinh viên CNTT</p>
+        </div>
+
+        <div id="about" class="section">
+            <h2>Giới thiệu bản thân</h2>
+            <p>Xin chào! Tôi là Nguyễn Thị Mỹ Hạnh, một người đam mê máy tính và công nghệ.</p>
+        </div>
+
+        <div id="hobbies" class="section">
+            <h2>Sở thích</h2>
+            <p>Tôi thích lập trình, nghe nhạc và khám phá công nghệ mới.</p>
+        </div>
+
+        <div id="education" class="section">
+            <h2>Quá trình học tập</h2>
+            <p>Hiện tôi đang học tại Trường Đại học Thủ đô Hà Nội.</p>
+        </div>
+
+        <div id="career" class="section">
+            <h2>Định hướng công việc</h2>
+            <p>Mong muốn trở thành lập trình viên chuyên nghiệp.</p>
+        </div>
+    </div>
+
+    <script>
+        const themeToggle = document.getElementById("theme-toggle");
+        const currentTheme = localStorage.getItem("theme") || "light";
+
+        // Đặt theme khi tải trang
+        document.documentElement.setAttribute("data-theme", currentTheme);
+        themeToggle.innerHTML = currentTheme === "dark" ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+
+        // Xử lý khi bấm nút chuyển đổi
+        themeToggle.addEventListener("click", () => {
+            let newTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+            document.documentElement.setAttribute("data-theme", newTheme);
+            localStorage.setItem("theme", newTheme);
+
+            // Thay đổi icon của button
+            themeToggle.innerHTML = newTheme === "dark" ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        });
+    </script>
+</body>
+</html>
